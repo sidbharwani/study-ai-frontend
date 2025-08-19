@@ -26,11 +26,16 @@ function addBubble({ role, content, isError = false }) {
     av.className = "avatar";
     av.textContent = "I";
     el.prepend(av);
-  } else {
-    el.classList.add("user");
-  }
 
-    body.innerHTML = marked.parse(content);
+    // Render Markdown if available; otherwise fall back to plain text
+    if (window.marked && typeof marked.parse === "function") {
+      // optional: turn single newlines into <br> like chat apps
+      marked.setOptions({ breaks: true });
+      body.innerHTML = marked.parse(content);
+    } else {
+      body.textContent = content; // fallback
+      console.warn("marked.js not loaded; rendering as plain text");
+    }
   } else {
     el.classList.add("user");
     body.textContent = content;
@@ -43,6 +48,7 @@ function addBubble({ role, content, isError = false }) {
 
   return el;
 }
+
 
 function setSending(on) {
   dom.send.disabled = on;
