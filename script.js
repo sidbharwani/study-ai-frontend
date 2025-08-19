@@ -1,4 +1,3 @@
-
 const BACKEND_URL = "https://study-ai-backend.study-ai.workers.dev";
 
 const dom = {
@@ -26,29 +25,18 @@ function addBubble({ role, content, isError = false }) {
     av.className = "avatar";
     av.textContent = "I";
     el.prepend(av);
-
-    // Render Markdown if available; otherwise fall back to plain text
-    if (window.marked && typeof marked.parse === "function") {
-      // optional: turn single newlines into <br> like chat apps
-      marked.setOptions({ breaks: true });
-      body.innerHTML = marked.parse(content);
-    } else {
-      body.textContent = content; // fallback
-      console.warn("marked.js not loaded; rendering as plain text");
-    }
   } else {
     el.classList.add("user");
-    body.textContent = content;
   }
 
   if (isError) el.classList.add("error");
 
+  body.textContent = content;
   dom.chat.appendChild(frag);
   dom.chat.scrollTop = dom.chat.scrollHeight;
 
   return el;
 }
-
 
 function setSending(on) {
   dom.send.disabled = on;
