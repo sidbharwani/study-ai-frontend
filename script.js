@@ -1,3 +1,4 @@
+
 const BACKEND_URL = "https://study-ai-backend.study-ai.workers.dev";
 
 const dom = {
@@ -29,9 +30,14 @@ function addBubble({ role, content, isError = false }) {
     el.classList.add("user");
   }
 
+    body.innerHTML = marked.parse(content);
+  } else {
+    el.classList.add("user");
+    body.textContent = content;
+  }
+
   if (isError) el.classList.add("error");
 
-  body.textContent = content;
   dom.chat.appendChild(frag);
   dom.chat.scrollTop = dom.chat.scrollHeight;
 
