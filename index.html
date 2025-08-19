@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study AI — Ivy, your study tutor</title>
+
+  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+  <link rel="icon" href="Study Ai's I.png">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <div class="ivy-avatar">I</div>
+      <div>
+        <h1>Study AI</h1>
+        <div class="sub">with <strong>Ivy</strong>, your personal tutor</div>
+      </div>
+    </div>
+
+    <nav class="quick-actions">
+      <button class="pill" id="btn-flashcards">Flashcards</button>
+      <button class="pill" id="btn-test">Test mode</button>
+      <button class="pill" id="btn-guide">Study guide</button>
+      <button class="pill" id="btn-solution">Solution</button>
+    </nav>
+  </header>
+
+  <main class="chat-shell">
+    <section class="chat-window" id="chatWindow"></section>
+  </main>
+
+  <footer class="composer">
+    <div class="composer-inner">
+      <textarea id="composerInput" rows="1" placeholder="Type your message..."></textarea>
+      <div class="composer-actions">
+        <button id="sendBtn" class="send">Send <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="hint">Press <kbd>Enter</kbd> to send, <kbd>Shift</kbd>+<kbd>Enter</kbd> for a new line.</div>
+  </footer>
+
+  <template id="bubble-tpl">
+    <article class="bubble">
+      <div class="bubble-content"></div>
+    </article>
+  </template>
+
+  <script src="script.js?v=1" defer></script>
+</body>
+</html>
